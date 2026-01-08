@@ -256,17 +256,27 @@ function renderArticles() {
         return;
     }
     
-    articlesGrid.innerHTML = portfolioData.articles.map(article => `
+    // Helper function to detect if text contains Devanagari (Hindi) characters
+    function containsDevanagari(text) {
+        return /[\u0900-\u097F]/.test(text);
+    }
+    
+    articlesGrid.innerHTML = portfolioData.articles.map(article => {
+        const hasHindi = containsDevanagari(article.title || '');
+        const titleClass = hasHindi ? 'text-xl font-semibold mt-4 mb-4 leading-relaxed hindi-text' : 'text-xl font-serif font-semibold mt-4 mb-4 leading-tight';
+        
+        return `
         <article class="bg-white dark:bg-gray-900 rounded-lg border-2 border-gray-200 dark:border-gray-800 p-8 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300" data-aos="fade-up">
             <time class="text-xs text-gray-500 dark:text-gray-400 font-mono tracking-wide uppercase">${new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-            <h3 class="text-xl font-serif font-semibold mt-4 mb-4 leading-tight">${article.title || ''}</h3>
+            <h3 class="${titleClass}" ${hasHindi ? 'lang="hi"' : ''}>${article.title || ''}</h3>
             <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed article-text">${article.excerpt || ''}</p>
             <a href="${article.link || '#'}" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-gray-100 font-medium underline-elegant inline-flex items-center group">
                 Read More
                 <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
             </a>
         </article>
-    `).join('');
+    `;
+    }).join('');
     
     lucide.createIcons();
 }
@@ -276,58 +286,143 @@ function renderGallery() {
     const galleryGrid = document.getElementById('gallery-grid');
     if (!galleryGrid || !portfolioData.gallery) return;
     
-    if (portfolioData.gallery.length === 0 || !portfolioData.gallery.some(img => img.url)) {
-        galleryGrid.innerHTML = '<p class="col-span-full text-center text-gray-500 dark:text-gray-400">No photos yet. Add Google Drive URLs to the data.json file.</p>';
+    // Check if gallery is array of strings (filenames) or old structure
+    let files = [];
+    
+    if (Array.isArray(portfolioData.gallery)) {
+        if (portfolioData.gallery.length > 0) {
+            // Check if first item is a string (filename) or object
+            if (typeof portfolioData.gallery[0] === 'string') {
+                // New structure: array of filenames
+                files = portfolioData.gallery
+                    .filter(filename => filename && filename.trim() !== '')
+                    .sort() // Sort alphabetically
+                    .slice(0, 6); // Take top 6
+            } else {
+                // Old structure: array of objects with url (backward compatibility)
+                files = portfolioData.gallery
+                    .filter(img => img.url && img.url.trim() !== '')
+                    .slice(0, 6);
+            }
+        }
+    }
+    
+    if (files.length === 0) {
+        galleryGrid.innerHTML = '<p class="col-span-full text-center text-gray-500 dark:text-gray-400">No photos yet. Add image filenames to the gallery array in data.json.</p>';
         return;
     }
     
-    galleryGrid.innerHTML = portfolioData.gallery
-        .filter(img => img.url && img.url.trim() !== '')
-        .map((img, index) => {
-            const imageUrl = convertGoogleDriveUrl(img.url);
-            return `
-                <div class="group relative overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800 aspect-square" data-aos="fade-up" data-aos-delay="${index % 6 * 50}">
-                    <img 
-                        src="${imageUrl}" 
-                        alt="${img.alt || 'Gallery image'}" 
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 image-loading"
-                        loading="lazy"
-                        onload="this.classList.remove('image-loading'); this.style.opacity='1'"
-                        onerror="this.classList.remove('image-loading'); this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center text-gray-400\\'><i data-lucide=\\'image-off\\' class=\\'w-12 h-12\\'></i></div>'; lucide.createIcons();"
-                        style="opacity: 0; transition: opacity 0.3s"
-                    >
-                    ${img.caption ? `
-                        <div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                            <p class="text-sm">${img.caption}</p>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-        }).join('');
+    galleryGrid.innerHTML = files.map((file, index) => {
+        let imageUrl, alt, caption;
+        
+        if (typeof file === 'string') {
+            // New structure: filename string
+            imageUrl = `images/gallery/${file}`;
+            alt = file.replace(/\.[^/.]+$/, ''); // Remove extension for alt text
+            caption = '';
+        } else {
+            // Old structure: object with url (backward compatibility)
+            imageUrl = convertGoogleDriveUrl(file.url);
+            alt = file.alt || 'Gallery image';
+            caption = file.caption || '';
+        }
+        
+        return `
+            <div class="group relative overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800 aspect-square" data-aos="fade-up" data-aos-delay="${index % 6 * 50}">
+                <img 
+                    src="${imageUrl}" 
+                    alt="${alt}" 
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 image-loading"
+                    loading="lazy"
+                    onload="this.classList.remove('image-loading'); this.style.opacity='1'"
+                    onerror="this.classList.remove('image-loading'); this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center text-gray-400\\'><i data-lucide=\\'image-off\\' class=\\'w-12 h-12\\'></i></div>'; lucide.createIcons();"
+                    style="opacity: 0; transition: opacity 0.3s"
+                >
+                ${caption ? `
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <p class="text-sm">${caption}</p>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }).join('');
     
     lucide.createIcons();
 }
 
-// Render Newsletter
-function renderNewsletter() {
-    const newsletterSection = document.getElementById('newsletter');
-    const newsletterTitle = document.getElementById('newsletter-title');
-    const newsletterDescription = document.getElementById('newsletter-description');
+// Initialize Contact Form
+function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const submitLoading = document.getElementById('submit-loading');
     
-    if (!portfolioData.newsletter || !portfolioData.newsletter.display) {
-        if (newsletterSection) {
-            newsletterSection.style.display = 'none';
+    if (!contactForm) return;
+    
+    // Populate form fields from data.json
+    if (portfolioData.contact) {
+        const accessKeyInput = document.getElementById('form-access-key');
+        const subjectInput = document.getElementById('form-subject');
+        const fromNameInput = document.getElementById('form-from-name');
+        
+        if (accessKeyInput && portfolioData.contact.access_key) {
+            accessKeyInput.value = portfolioData.contact.access_key;
         }
-        return;
+        if (subjectInput && portfolioData.contact.subject) {
+            subjectInput.value = portfolioData.contact.subject;
+        }
+        if (fromNameInput && portfolioData.contact.from_name) {
+            fromNameInput.value = portfolioData.contact.from_name;
+        }
     }
     
-    if (newsletterTitle && portfolioData.newsletter.title) {
-        newsletterTitle.textContent = portfolioData.newsletter.title;
-    }
-    
-    if (newsletterDescription && portfolioData.newsletter.description) {
-        newsletterDescription.textContent = portfolioData.newsletter.description;
-    }
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.classList.add('hidden');
+        submitLoading.classList.remove('hidden');
+        formMessage.classList.add('hidden');
+        
+        try {
+            const formData = new FormData(contactForm);
+            
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok && data.success) {
+                // Success
+                formMessage.textContent = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+                formMessage.className = 'p-3 rounded text-sm mb-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200';
+                formMessage.classList.remove('hidden');
+                contactForm.reset();
+            } else {
+                // Error
+                formMessage.textContent = data.message || 'Sorry, there was an error sending your message. Please try again.';
+                formMessage.className = 'p-3 rounded text-sm mb-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200';
+                formMessage.classList.remove('hidden');
+            }
+        } catch (error) {
+            // Network or other error
+            formMessage.textContent = 'Sorry, there was an error sending your message. Please check your connection and try again.';
+            formMessage.className = 'p-3 rounded text-sm mb-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200';
+            formMessage.classList.remove('hidden');
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitText.classList.remove('hidden');
+            submitLoading.classList.add('hidden');
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
 }
 
 // Initialize everything
@@ -349,7 +444,9 @@ async function init() {
         renderSkills();
         renderArticles();
         renderGallery();
-        renderNewsletter();
+        
+        // Initialize contact form
+        initContactForm();
         
         // Set current year
         document.getElementById('current-year').textContent = new Date().getFullYear();

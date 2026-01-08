@@ -6,7 +6,10 @@
     "avatar": "avatar.png",
     "email": "prabhakarhome1993@gmail.com",
     "location": "Asia/Kolkata",
-    "languages": ["Hindi", "English"]
+    "languages": [
+      "Hindi",
+      "English"
+    ]
   },
   "social": [
     {
@@ -38,12 +41,48 @@
       "title": "Work Experience",
       "experiences": [
         {
+          "company": "Prasar Bharti (Doordarshan)",
+          "timeframe": "Oct 2025 - Present",
+          "role": "Stringer",
+          "achievements": [
+            "Serving as a Stringer for Doordarshan in the Rewa District of Madhya Pradesh, covering local news, developmental issues, and cultural events.",
+            "Providing timely and accurate ground-level reporting for the national public broadcaster."
+          ]
+        },
+        {
           "company": "Tree Initiatives Society",
-          "timeframe": "Jan 2025 - Present",
+          "timeframe": "Dec 2024 - Present",
           "role": "President",
           "achievements": [
             "Founded and led Tree Initiatives Society, a registered education-focused organization committed to societal upliftment through grassroots mobilization, awareness campaigns, and inclusive development.",
             "Spearheaded key initiatives including health camps, educational outreach programs, and community engagement drives, successfully mobilizing volunteers and resources to support underprivileged populations."
+          ]
+        },
+        {
+          "company": "Zee TV (Kahani Har Ghar Ki)",
+          "timeframe": "Aug 2025 - Nov 2025",
+          "role": "On-ground Reporter & Story Provider",
+          "achievements": [
+            "Acted as a primary story provider and on-ground reporter, identifying compelling real-life narratives for television broadcast.",
+            "Collaborated with production teams to ensure authentic representation of grassroots stories."
+          ]
+        },
+        {
+          "company": "Basti News Times (Daily Newspaper)",
+          "timeframe": "Jul 2025 - Oct 2025",
+          "role": "Reporter",
+          "achievements": [
+            "Reported on local governance, crime, and social issues across the Basti District for the daily print edition.",
+            "Managed tight deadlines and maintained a consistent flow of localized news coverage."
+          ]
+        },
+        {
+          "company": "Dainik Bhaskar",
+          "timeframe": "Jun 2025 - Jul 2025",
+          "role": "Block Incharge & Stringer",
+          "achievements": [
+            "Served as the Block Incharge in Bahadurpur district, overseeing localized news operations and distribution insights.",
+            "Contributed as a Stringer, filing breaking news stories and investigative reports from the region."
           ]
         },
         {
@@ -109,25 +148,74 @@
       ]
     }
   },
-  "articles": [
+"articles": [
     {
-      "title": "Sample Article Title",
-      "excerpt": "A brief description of the article that highlights key points and draws readers in.",
-      "date": "2024-01-15",
-      "link": "#"
+      "title": "बस्ती में विधायक ने शासन को लिखा पत्र",
+      "excerpt": "गन्ना किसानों को रुधौली चीनी मिल से हटाकर मुंडेरवा मिल में जोड़ने की मांग तेज",
+      "date": "2024-07-28",
+      "link": "https://dainik.bhaskar.com/xs5reGt5SUb"
+    },
+    {
+      "title": "बहादुरपुर में वृहद पौधरोपण अभियान",
+      "excerpt": "एक दिन में 37 करोड़ पौधे लगाने का लक्ष्य, बस्ती में एनजीओ और ग्रामीणों की भागीदारी",
+      "date": "2024-07-20",
+      "link": "https://dainik.bhaskar.com/K75IBOiFRUb"
+    },
+    {
+      "title": "रूधौली चीनी मिल में गन्ना किसानों के भुगतान में विलंब",
+      "excerpt": "महादेवा विधायक ने गन्ना आयुक्त को पत्र लिखने का दिया आश्वासन, कहा विधानसभा में भी उठाएंगे मुद्दा",
+      "date": "2024-07-15",
+      "link": "https://dainik.bhaskar.com/Fn2UbQtnOUb"
+    },
+    {
+      "title": "बस्ती में वन महोत्सव का आयोजन",
+      "excerpt": "5 ग्राम पंचायतों में 1100 पौधों का होगा रोपण, स्कूली बच्चों ने भी की भागीदारी",
+      "date": "2024-07-06",
+      "link": "https://dainik.bhaskar.com/hMXtq70SKUb"
+    },
+    {
+      "title": "बस्ती के 5 पंचायतों में वन महोत्सव की तैयारी",
+      "excerpt": "ट्री इनिशिएटिव्स सोसाइटी 5 जुलाई को लगाएगी 1100 पौधे, जागरूकता सत्र भी होगा आयोजित",
+      "date": "2024-07-05",
+      "link": "https://dainik.bhaskar.com/76tu4ZijHUb"
+    },
+    {
+      "title": "रूधौली मिल की मनमानी पर किसान आक्रोशित",
+      "excerpt": "बस्ती सांसद राम प्रसाद चौधरी ने गन्ना आयुक्त को लिखा पत्र",
+      "date": "2024-06-30",
+      "link": "https://dainik.bhaskar.com/oUG2gArqCUb"
+    },
+    {
+      "title": "छुट्टा जानवरों से किसानों की फसलें बर्बाद",
+      "excerpt": "कुसौरा क्षेत्र में गन्ना और धान की फसल को नुकसान, प्रशासन से गुहार",
+      "date": "2024-06-25",
+      "link": "https://dainik.bhaskar.com/BZTkQntpnUb"
+    },
+    {
+      "title": "टीबी स्क्रीनिंग कैंप में 50 मरीजों की जांच",
+      "excerpt": "बस्ती के बेलवाडाड़ में 10 मरीजों के बलगम सैंपल लिए, टीबी मरीजों को मिलेगी 1000 रुपए की मदद",
+      "date": "2024-06-20",
+      "link": "https://dainik.bhaskar.com/Xs4wDkCOlUb"
+    },
+    {
+      "title": "गन्ना किसानों के लिए प्रधानों ने लिखा डीएम को पत्र",
+      "excerpt": "रूधौली मिल से हटकर मुंडेरवा मिल से जुड़ने की मांग, समय पर भुगतान नहीं मिलने से परेशान",
+      "date": "2024-06-15",
+      "link": "https://dainik.bhaskar.com/QOT7s6WP8Tb"
+    },
+    {
+      "title": "ग्रामीणों की भागीदारी से आंबेडकर पार्क का शिलान्यास",
+      "excerpt": "ग्रामीणों की भागीदारी से आंबेडकर पार्क का शिलान्यास: प्रतिमा अनावरण समारोह संपन्न, सांस्कृतिक प्रस्तुतियां दी गईं",
+      "date": "2024-06-07",
+      "link": "https://dainik.bhaskar.com/7qkfjl1sASb"
     }
   ],
   "gallery": [
-    {
-      "url": "",
-      "alt": "Gallery Image",
-      "caption": "Photo caption"
-    }
+    "kumbh.jpg"
   ],
-  "newsletter": {
-    "display": true,
-    "title": "Subscribe to Prabhakar's Newsletter",
-    "description": "I occasionally write about social justice, corruption, and share thoughts on the intersection of technology and society."
+  "contact": {
+    "access_key": "b4b5b225-bed8-407d-a2c1-51331144c469",
+    "subject": "New Contact Form Submission from Portfolio",
+    "from_name": "Portfolio Contact Form"
   }
 }
-
