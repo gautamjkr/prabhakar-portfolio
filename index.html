@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prabhakar - Multimedia Journalist Portfolio">
+    <title>Prabhakar - Multimedia Journalist</title>
+    <link rel="icon" type="image/png" href="avatar.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Serif for headings, Sans-serif for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.75;
+            letter-spacing: 0.01em;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        
+        /* Newspaper-style section dividers */
+        .section-divider {
+            @apply border-t-2 border-gray-300 dark:border-gray-700 my-12;
+        }
+        
+        /* Newspaper-style article text */
+        .article-text {
+            line-height: 1.8;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        /* Elegant underline effect */
+        .underline-elegant {
+            position: relative;
+            text-decoration: none;
+        }
+        .underline-elegant::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        .underline-elegant:hover::after {
+            width: 100%;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            @apply bg-gray-100 dark:bg-gray-900;
+        }
+        ::-webkit-scrollbar-thumb {
+            @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            @apply bg-gray-400 dark:bg-gray-600;
+        }
+        
+        /* Loading state for images */
+        .image-loading {
+            @apply bg-gray-200 dark:bg-gray-800 animate-pulse;
+        }
+        
+        /* Newspaper column layout for articles */
+        @media (min-width: 1024px) {
+            .newspaper-column {
+                columns: 1;
+            }
+        }
+        
+        /* Elegant drop cap effect */
+        .drop-cap::first-letter {
+            float: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1;
+            padding-right: 0.5rem;
+            padding-top: 0.3rem;
+            font-weight: 700;
+        }
+        
+        /* Screen reader only class for accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        .focus\:not-sr-only:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: inherit;
+            margin: inherit;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#home" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:rounded-lg">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#home" class="text-xl font-serif font-bold" aria-label="Prabhakar - Home">Prabhakar</a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8" aria-label="Main navigation">
+                    <a href="#home" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">About</a>
+                    <a href="#articles" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Articles</a>
+                    <a href="#gallery" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Gallery</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
+                        <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
+                        <i data-lucide="moon" class="dark:hidden w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800" aria-label="Mobile navigation">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block py-2 nav-link">Home</a>
+                <a href="#about" class="block py-2 nav-link">About</a>
+                <a href="#articles" class="block py-2 nav-link">Articles</a>
+                <a href="#gallery" class="block py-2 nav-link">Gallery</a>
+                <button id="mobile-theme-toggle" class="flex items-center py-2 nav-link">
+                    <span class="mr-2">Toggle Theme</span>
+                    <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
+                    <i data-lucide="moon" class="dark:hidden w-5 h-5"></i>
+                </button>
+            </div>
+        </nav>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <div class="mb-10">
+                <img src="avatar.png" alt="Prabhakar" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto object-cover border-4 border-gray-900 dark:border-gray-100 shadow-xl ring-4 ring-gray-200 dark:ring-gray-800">
+            </div>
+            <h1 id="hero-headline" class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 tracking-tight"></h1>
+            <div class="section-divider w-24 mx-auto"></div>
+            <p id="hero-subline" class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed article-text"></p>
+            
+            <!-- Social Links -->
+            <div id="social-links" class="flex justify-center items-center space-x-4"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-center" data-aos="fade-up">About</h2>
+            <div class="section-divider w-24 mx-auto mb-16"></div>
+            
+            <!-- Introduction -->
+            <div id="intro-section" class="mb-20" data-aos="fade-up" data-aos-delay="100"></div>
+            
+            <!-- Work Experience -->
+            <div id="work-section" class="mb-20" data-aos="fade-up" data-aos-delay="200"></div>
+            
+            <!-- Education -->
+            <div id="education-section" class="mb-20" data-aos="fade-up" data-aos-delay="300"></div>
+            
+            <!-- Skills -->
+            <div id="skills-section" data-aos="fade-up" data-aos-delay="400"></div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-center" data-aos="fade-up">Articles</h2>
+            <div class="section-divider w-24 mx-auto mb-16"></div>
+            <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-center" data-aos="fade-up">Photo Gallery</h2>
+            <div class="section-divider w-24 mx-auto mb-16"></div>
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="py-20 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 id="newsletter-title" class="text-2xl md:text-3xl font-serif font-bold mb-4"></h2>
+            <p id="newsletter-description" class="text-gray-600 dark:text-gray-400 mb-8"></p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600">
+                <button class="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto text-center text-gray-600 dark:text-gray-400">
+            <p>&copy; <span id="current-year"></span> Prabhakar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+    
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
