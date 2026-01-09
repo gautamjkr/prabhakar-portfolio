@@ -35,7 +35,7 @@
   "about": {
     "intro": {
       "title": "Introduction",
-      "description": "Around 3 years of journalistic experience working with different organizations and domains. I do stories to make a difference and use journalism for the public good."
+      "description": "Multimedia and fact-check journalist with around 3 years of newsroom and field reporting experience across television, digital, and print platforms. Proven record of political and social storytelling, misinformation debunking, and ground reporting from protests, elections, and grassroots communities. Adept at using OSINT and verification tools to ensure accuracy and public-interest journalism."
     },
     "work": {
       "title": "Work Experience",
@@ -44,72 +44,49 @@
           "company": "Prasar Bharti (Doordarshan)",
           "timeframe": "Oct 2025 - Present",
           "role": "Stringer",
-          "achievements": [
-            "Serving as a Stringer for Doordarshan in the Rewa District of Madhya Pradesh, covering local news, developmental issues, and cultural events.",
-            "Providing timely and accurate ground-level reporting for the national public broadcaster."
-          ]
+          "type": ["Television"]
         },
         {
           "company": "Tree Initiatives Society",
           "timeframe": "Dec 2024 - Present",
           "role": "President",
-          "achievements": [
-            "Founded and led Tree Initiatives Society, a registered education-focused organization committed to societal upliftment through grassroots mobilization, awareness campaigns, and inclusive development.",
-            "Spearheaded key initiatives including health camps, educational outreach programs, and community engagement drives, successfully mobilizing volunteers and resources to support underprivileged populations."
-          ]
+          "type": ["Organization"]
         },
         {
           "company": "Zee TV (Kahani Har Ghar Ki)",
           "timeframe": "Aug 2025 - Nov 2025",
           "role": "On-ground Reporter & Story Provider",
-          "achievements": [
-            "Acted as a primary story provider and on-ground reporter, identifying compelling real-life narratives for television broadcast.",
-            "Collaborated with production teams to ensure authentic representation of grassroots stories."
-          ]
+          "type": ["Television"]
         },
         {
           "company": "Basti News Times (Daily Newspaper)",
           "timeframe": "Jul 2025 - Oct 2025",
           "role": "Reporter",
-          "achievements": [
-            "Reported on local governance, crime, and social issues across the Basti District for the daily print edition.",
-            "Managed tight deadlines and maintained a consistent flow of localized news coverage."
-          ]
+          "type": ["Print"]
         },
         {
           "company": "Dainik Bhaskar",
           "timeframe": "Jun 2025 - Jul 2025",
           "role": "Block Incharge & Stringer",
-          "achievements": [
-            "Served as the Block Incharge in Bahadurpur district, overseeing localized news operations and distribution insights.",
-            "Contributed as a Stringer, filing breaking news stories and investigative reports from the region."
-          ]
+          "type": ["Print", "Digital"]
         },
         {
           "company": "Jan Suraj",
           "timeframe": "Oct 2023 - Sep 2024",
           "role": "Fellow",
-          "achievements": [
-            "Conducted grassroots-level data collection to identify local socio-economic issues, enabling evidence-based planning and targeted intervention strategies.",
-            "Led community mobilization campaigns, engaging diverse stakeholders to raise awareness, build participation, and drive collective action around public welfare initiatives."
-          ]
+          "type": ["Social Impact"]
         },
         {
           "company": "India News (ITV Network)",
           "timeframe": "Oct 2022 - Nov 2022",
           "role": "Researcher",
-          "achievements": [
-            "Conducted political and social research at India News, supporting news reporting with insights and writing research-based articles on current affairs to enhance content accuracy."
-          ]
+          "type": ["Television"]
         },
         {
           "company": "Impractical Media",
           "timeframe": "Jan 2020 - Oct 2022",
           "role": "Chief Editor",
-          "achievements": [
-            "Reported on major national events including the UP Assembly elections and Farmer's Protest; contributed background research, scripts, photo stories, and in-depth coverage of politically sensitive issues like Delhi violence.",
-            "Edited and created multimedia content—including fact-check posts, social media graphics, and website articles—while actively participating in editorial meetings to pitch and refine story ideas."
-          ]
+          "type": ["Digital"]
         }
       ]
     },
@@ -138,83 +115,288 @@
       "title": "Skills",
       "items": [
         {
-          "title": "Investigative Journalism & Fact-Checking Expertise",
-          "description": "Skilled in reporting, proofreading, editorial writing, and content research with hands-on experience using advanced verification tools such as Bot Sentinel, FotoForensics, InVid, Wayback Machine, YouTube Data Viewer, WHOIS Lookup, and Yandex. Adept at identifying misinformation and delivering accurate, responsible journalism."
+          "title": "Investigative Journalism & Fact-Checking",
+          "icon": "search",
+          "tools": ["Bot Sentinel", "FotoForensics", "InVid", "Wayback Machine", "YouTube Data Viewer", "WHOIS Lookup", "Yandex"],
+          "description": "Expert in OSINT and verification tools for misinformation debunking and accurate reporting."
         },
         {
-          "title": "Multimedia Production & Digital Storytelling",
-          "description": "Proficient in Hindi typing, video editing with Adobe Premiere Pro, and creating compelling infographics. Well-versed in DSLR photography and mobile journalism techniques, enabling the production of high-impact visual content tailored for digital media platforms."
+          "title": "Multimedia Production",
+          "icon": "video",
+          "tools": ["Adobe Premiere Pro", "DSLR Photography", "Mobile Journalism", "Hindi Typing", "Infographics"],
+          "description": "Proficient in video editing, photography, and creating compelling visual content for digital platforms."
+        },
+        {
+          "title": "Reporting & Storytelling",
+          "icon": "pen-tool",
+          "tools": ["Field Reporting", "Political Coverage", "Social Storytelling", "Ground Reporting", "Editorial Writing"],
+          "description": "Proven record of covering protests, elections, and grassroots communities with impactful storytelling."
         }
       ]
     }
   },
 "articles": [
     {
-      "title": "बस्ती में विधायक ने शासन को लिखा पत्र",
-      "excerpt": "गन्ना किसानों को रुधौली चीनी मिल से हटाकर मुंडेरवा मिल में जोड़ने की मांग तेज",
-      "date": "2024-07-28",
-      "link": "https://dainik.bhaskar.com/xs5reGt5SUb"
+      "title": "जयंती पर स्थापित मूर्ति टूटी, ग्रामीणों ने जताई तोड़फोड़ की आशंका",
+      "excerpt": "जयंती पर स्थापित मूर्ति टूटी, ग्रामीणों ने तोड़फोड़ की आशंका जताई",
+      "link": "https://dainik.bhaskar.com/O4kJ8Qwt1Tb"
     },
     {
-      "title": "बहादुरपुर में वृहद पौधरोपण अभियान",
-      "excerpt": "एक दिन में 37 करोड़ पौधे लगाने का लक्ष्य, बस्ती में एनजीओ और ग्रामीणों की भागीदारी",
-      "date": "2024-07-20",
-      "link": "https://dainik.bhaskar.com/K75IBOiFRUb"
+      "title": "बहादुरपुर के 182 गन्ना किसानों ने नियुक्त किया प्रतिनिधि",
+      "excerpt": "बहादुरपुर के 182 गन्ना किसानों ने नियुक्त किया प्रतिनिधि, मुंडेरवा मिल से जोड़ने की मांग",
+      "link": "https://dainik.bhaskar.com/mzfMyNrT1Tb"
     },
     {
-      "title": "रूधौली चीनी मिल में गन्ना किसानों के भुगतान में विलंब",
-      "excerpt": "महादेवा विधायक ने गन्ना आयुक्त को पत्र लिखने का दिया आश्वासन, कहा विधानसभा में भी उठाएंगे मुद्दा",
-      "date": "2024-07-15",
-      "link": "https://dainik.bhaskar.com/Fn2UbQtnOUb"
+      "title": "चमनगंज चौराहे पर सड़ा बिजली पोल, 2 माह से कोई कार्रवाई नहीं",
+      "excerpt": "बस्ती के चमनगंज चौराहे पर 1100 वोल्ट की लाइन का पोल सड़ा, 2 माह से शिकायत पर कार्रवाई नहीं",
+      "link": "https://dainik.bhaskar.com/WUBKdv912Tb"
     },
     {
-      "title": "बस्ती में वन महोत्सव का आयोजन",
-      "excerpt": "5 ग्राम पंचायतों में 1100 पौधों का होगा रोपण, स्कूली बच्चों ने भी की भागीदारी",
-      "date": "2024-07-06",
-      "link": "https://dainik.bhaskar.com/hMXtq70SKUb"
+      "title": "कुसौरा पॉवर हाउस के पास जलभराव से परेशानी",
+      "excerpt": "कुसौरा पॉवर हाउस के पास 600 मीटर तक जलभराव, दुकानदारों और राहगीरों को दिक्कत",
+      "link": "https://dainik.bhaskar.com/MyCjzRUJ4Tb"
     },
     {
-      "title": "बस्ती के 5 पंचायतों में वन महोत्सव की तैयारी",
-      "excerpt": "ट्री इनिशिएटिव्स सोसाइटी 5 जुलाई को लगाएगी 1100 पौधे, जागरूकता सत्र भी होगा आयोजित",
-      "date": "2024-07-05",
-      "link": "https://dainik.bhaskar.com/76tu4ZijHUb"
-    },
-    {
-      "title": "रूधौली मिल की मनमानी पर किसान आक्रोशित",
-      "excerpt": "बस्ती सांसद राम प्रसाद चौधरी ने गन्ना आयुक्त को लिखा पत्र",
-      "date": "2024-06-30",
-      "link": "https://dainik.bhaskar.com/oUG2gArqCUb"
-    },
-    {
-      "title": "छुट्टा जानवरों से किसानों की फसलें बर्बाद",
-      "excerpt": "कुसौरा क्षेत्र में गन्ना और धान की फसल को नुकसान, प्रशासन से गुहार",
-      "date": "2024-06-25",
-      "link": "https://dainik.bhaskar.com/BZTkQntpnUb"
-    },
-    {
-      "title": "टीबी स्क्रीनिंग कैंप में 50 मरीजों की जांच",
-      "excerpt": "बस्ती के बेलवाडाड़ में 10 मरीजों के बलगम सैंपल लिए, टीबी मरीजों को मिलेगी 1000 रुपए की मदद",
-      "date": "2024-06-20",
-      "link": "https://dainik.bhaskar.com/Xs4wDkCOlUb"
-    },
-    {
-      "title": "गन्ना किसानों के लिए प्रधानों ने लिखा डीएम को पत्र",
+      "title": "रूधौली मिल से हटकर मुंडेरवा मिल से जुड़ने की मांग",
       "excerpt": "रूधौली मिल से हटकर मुंडेरवा मिल से जुड़ने की मांग, समय पर भुगतान नहीं मिलने से परेशान",
-      "date": "2024-06-15",
       "link": "https://dainik.bhaskar.com/QOT7s6WP8Tb"
     },
     {
-      "title": "ग्रामीणों की भागीदारी से आंबेडकर पार्क का शिलान्यास",
-      "excerpt": "ग्रामीणों की भागीदारी से आंबेडकर पार्क का शिलान्यास: प्रतिमा अनावरण समारोह संपन्न, सांस्कृतिक प्रस्तुतियां दी गईं",
-      "date": "2024-06-07",
-      "link": "https://dainik.bhaskar.com/7qkfjl1sASb"
+      "title": "दो गांवों में 15 दिन से नल सूखे",
+      "excerpt": "बस्ती के दो गांवों में 15 दिन से नल सूखे, ग्रामीणों की शिकायतें अनसुनी",
+      "link": "https://dainik.bhaskar.com/DNtaZpTT6Tb"
+    },
+    {
+      "title": "NH-28 पर अंधेरे से दुर्घटना का खतरा",
+      "excerpt": "NH-28 पर अंधेरे से परेशान दुकानदार, रात में दुर्घटना का खतरा",
+      "link": "https://dainik.bhaskar.com/e0TUE3JM9Tb"
+    },
+    {
+      "title": "पैर टूटा गौवंश को मदद नहीं मिली",
+      "excerpt": "एक हफ्ते से पैर टूटा गौवंश एक जगह पड़ा, टोल फ्री नंबर 1962 पर कॉल बेअसर",
+      "link": "https://dainik.bhaskar.com/lYDJ13QM9Tb"
+    },
+    {
+      "title": "8x8 फुट के कमरे में चलता चिकित्सालय",
+      "excerpt": "बहादुरपुर में 8x8 फुट के कमरे में चलता है पूरा चिकित्सालय, मूलभूत सुविधाएं नदारद",
+      "link": "https://dainik.bhaskar.com/yMbOCf9SbUb"
+    },
+    {
+      "title": "खुले चैंबर और टूटी सड़कों से परेशानी",
+      "excerpt": "बाघौड़ा गांव में खुले चैंबर और टूटी सड़कों से लोग परेशान, कई हो चुके चोटिल",
+      "link": "https://dainik.bhaskar.com/e2zlVIwNeUb"
+    },
+    {
+      "title": "सुबह 6 बजे से कचरा जलाने से प्रदूषण",
+      "excerpt": "सुबह 6 बजे से बिक्री, कचरा जलाने से प्रदूषण; महिलाएं रात में निकलने से डरती हैं",
+      "link": "https://dainik.bhaskar.com/5VbvgaBliUb"
+    },
+    {
+      "title": "बाढ़ प्रभावित क्षेत्रों में पशु परीक्षण",
+      "excerpt": "बाढ़ प्रभावित क्षेत्रों में 2099 पशुओं का परीक्षण, 348 गर्भवती पशुओं को छोड़ा",
+      "link": "https://dainik.bhaskar.com/NMka0QYliUb"
+    },
+    {
+      "title": "गोशालाओं में चारा-पानी की कमी",
+      "excerpt": "बहादुरपुर की तीन गोशालाओं में एक गाय की मौत, दो की हालत नाजुक; चारा-पानी की व्यवस्था नहीं",
+      "link": "https://dainik.bhaskar.com/dVZHdyrRjUb"
+    },
+    {
+      "title": "नालियों का जाम, सड़कों पर गंदा पानी",
+      "excerpt": "नालियों का जाम, सड़कों पर गंदा पानी, न सफाई कर्मी न प्रधान की सुध",
+      "link": "https://dainik.bhaskar.com/uH4fvKXTjUb"
+    },
+    {
+      "title": "बेलवाडाड़ में टीबी जांच शिविर",
+      "excerpt": "बस्ती के बेलवाडाड़ में 10 मरीजों के बलगम सैंपल लिए, टीबी मरीजों को मिलेगी 1000 रुपए की मदद",
+      "link": "https://dainik.bhaskar.com/Xs4wDkCOlUb"
+    },
+    {
+      "title": "10 हजार से कम लेनदेन पर दूसरे बैंक भेजा",
+      "excerpt": "10 हजार से कम के लेनदेन के लिए ग्राहकों को दूसरे बैंक भेजा जाता है, सीएसपी पर अतिरिक्त शुल्क",
+      "link": "https://dainik.bhaskar.com/5S1CUZCanUb"
+    },
+    {
+      "title": "कुसौरा में फसलों को नुकसान",
+      "excerpt": "कुसौरा क्षेत्र में गन्ना और धान की फसल को नुकसान, प्रशासन से गुहार",
+      "link": "https://dainik.bhaskar.com/BZTkQntpnUb"
+    },
+    {
+      "title": "2 करोड़ खर्च के बाद भी पानी नहीं",
+      "excerpt": "2 करोड़ खर्च के बाद भी न टंकी बनी, न पानी आया; NH किनारे के परिवार योजना से बाहर",
+      "link": "https://dainik.bhaskar.com/cTXNZy7iqUb"
+    },
+    {
+      "title": "35 बच्चों से चल रहा स्कूल",
+      "excerpt": "35 बच्चों से चल रहा स्कूल, कक्षाओं में सिर्फ 2-2 छात्र; शिक्षक परेशान",
+      "link": "https://dainik.bhaskar.com/kcxYDVepsUb"
+    },
+    {
+      "title": "डाकघर ऑपरेटर की आईडी ब्लॉक",
+      "excerpt": "ऑपरेटर की आईडी ब्लॉक, ग्रामीणों को बस्ती के प्रधान डाकघर जाना पड़ रहा",
+      "link": "https://dainik.bhaskar.com/WoE64PUQtUb"
+    },
+    {
+      "title": "बस्ती सांसद ने गन्ना आयुक्त को पत्र लिखा",
+      "excerpt": "बस्ती सांसद राम प्रसाद चौधरी ने गन्ना आयुक्त को लिखा पत्र",
+      "link": "https://dainik.bhaskar.com/oUG2gArqCUb"
+    },
+    {
+      "title": "गाय-भैंस का 75 हजार तक बीमा कवर",
+      "excerpt": "बस्ती के बहादुरपुर में शुरू हुई योजना, गाय-भैंस का 75 हजार तक का बीमा कवर",
+      "link": "https://dainik.bhaskar.com/LBR8lgLmFUb"
+    },
+    {
+      "title": "ट्री इनिशिएटिव्स सोसाइटी लगाएगी 1100 पौधे",
+      "excerpt": "ट्री इनिशिएटिव्स सोसाइटी 5 जुलाई को लगाएगी 1100 पौधे, जागरूकता सत्र भी होगा आयोजित",
+      "link": "https://dainik.bhaskar.com/76tu4ZijHUb"
+    },
+    {
+      "title": "चोरों ने भैंस की हत्या कर मांस ले गए",
+      "excerpt": "बस्ती के कनैला खुर्द में चोरों ने भैंस की हत्या कर मांस ले गए, 2 लाख की क्षति",
+      "link": "https://dainik.bhaskar.com/XPwYPcHfJUb"
+    },
+    {
+      "title": "18 की जगह 10 घंटे बिजली आपूर्ति",
+      "excerpt": "18 की जगह 10 घंटे बिजली, किसान डीजल इंजन से कर रहे सिंचाई",
+      "link": "https://dainik.bhaskar.com/Ji1aKS1gKUb"
+    },
+    {
+      "title": "5 ग्राम पंचायतों में 1100 पौधों का रोपण",
+      "excerpt": "5 ग्राम पंचायतों में 1100 पौधों का होगा रोपण, स्कूली बच्चों ने भी की भागीदारी",
+      "link": "https://dainik.bhaskar.com/hMXtq70SKUb"
+    },
+    {
+      "title": "शेखपुरा में सामूहिक पौधरोपण",
+      "excerpt": "शेखपुरा में वन विभाग और ट्री इनिशिएटिव्स सोसाइटी ने किया सामूहिक पौधरोपण",
+      "link": "https://dainik.bhaskar.com/wt5rfEOlMUb"
+    },
+    {
+      "title": "खेतों के ऊपर लटक रहे 11000 वोल्ट के तार",
+      "excerpt": "खेतों के ऊपर 5-7 फुट की ऊंचाई पर लटक रहे 11000 वोल्ट के तार, किसानों को खतरा",
+      "link": "https://dainik.bhaskar.com/OhQYAvKINUb"
+    },
+    {
+      "title": "महादेवा विधायक ने गन्ना आयुक्त को पत्र लिखने का आश्वासन",
+      "excerpt": "महादेवा विधायक ने गन्ना आयुक्त को पत्र लिखने का दिया आश्वासन, कहा विधानसभा में भी उठाएंगे मुद्दा",
+      "link": "https://dainik.bhaskar.com/Fn2UbQtnOUb"
+    },
+    {
+      "title": "महादेवा विधायक ने दिए 5000 रुपए",
+      "excerpt": "महादेवा विधायक ने दिए 5000 रुपए, अपराधियों को पकड़ने का दिया आश्वासन",
+      "link": "https://dainik.bhaskar.com/JMMD5J6SPUb"
+    },
+    {
+      "title": "एक दिन में 37 करोड़ पौधे लगाने का लक्ष्य",
+      "excerpt": "एक दिन में 37 करोड़ पौधे लगाने का लक्ष्य, बस्ती में एनजीओ और ग्रामीणों की भागीदारी",
+      "link": "https://dainik.bhaskar.com/K75IBOiFRUb"
+    },
+    {
+      "title": "बरसात में डूबती फसलें, स्कूल जाने में दिक्कत",
+      "excerpt": "बरसात में डूबती फसलें, स्कूली बच्चों का रुकता आना-जाना; कई गांवों के लोग परेशान",
+      "link": "https://dainik.bhaskar.com/iZhDaSRzSUb"
+    },
+    {
+      "title": "गन्ना किसानों को मुंडेरवा मिल से जोड़ने की मांग",
+      "excerpt": "गन्ना किसानों को रुधौली चीनी मिल से हटाकर मुंडेरवा मिल में जोड़ने की मांग तेज",
+      "link": "https://dainik.bhaskar.com/xs5reGt5SUb"
+    },
+    {
+      "title": "कालेश्वरनाथ मंदिर में गंदगी का अंबार",
+      "excerpt": "बस्ती के कालेश्वरनाथ मंदिर में गंदगी का अंबार, टूटी लाइटें और जर्जर व्यवस्था",
+      "link": "https://dainik.bhaskar.com/GHJhS4T0VUb"
+    },
+    {
+      "title": "समय पर इलाज न मिलने से गई जान",
+      "excerpt": "परिजनों का आरोप: दुर्घटना से नहीं, समय पर इलाज़ न मिलने से गई जान",
+      "link": "https://dainik.bhaskar.com/faohKRH7VUb"
+    },
+    {
+      "title": "10 साल से दुर्घटनाओं का कारण",
+      "excerpt": "बस्ती के जिगिनिया गांव में 10 साल से दुर्घटनाओं का कारण, विभाग टालते रहे जिम्मेदारी",
+      "link": "https://dainik.bhaskar.com/vbHIO1MJXUb"
+    },
+    {
+      "title": "बुजुर्ग महिला के पास से चोर ले उड़े बाइक",
+      "excerpt": "बुजुर्ग महिला के पास से चोर चुपचाप ले उड़े HF Deluxe",
+      "link": "https://dainik.bhaskar.com/2D610M4LXUb"
+    },
+    {
+      "title": "बहादुरपुर के चार मंदिरों में जलाभिषेक",
+      "excerpt": "बहादुरपुर के चार मंदिरों में जलाभिषेक और भंडारे का आयोजन",
+      "link": "https://dainik.bhaskar.com/aBISAosqZUb"
+    },
+    {
+      "title": "धान रोपाई के लिए पानी भरने की जरूरत नहीं",
+      "excerpt": "धान की रोपाई के लिए पानी भरने की जरूरत नहीं, सब्जी उत्पादकों को नुकसान की आशंका",
+      "link": "https://dainik.bhaskar.com/Od5HLxLMZUb"
+    },
+    {
+      "title": "कृषक सेवा केंद्र पर उर्वरक वितरण",
+      "excerpt": "बस्ती के कृषक सेवा केंद्र पर किसानों को मिल रहा उर्वरक, आधार कार्ड जरूरी",
+      "link": "https://dainik.bhaskar.com/mqQWebyk1Ub"
+    },
+    {
+      "title": "मिलेट्स और मक्का की खेती की जानकारी",
+      "excerpt": "किसानों को मिलेट्स और मक्का की खेती की तकनीकी जानकारी दी, निःशुल्क बीज मिनी किट का वितरण",
+      "link": "https://dainik.bhaskar.com/uLL5Kobc3Ub"
+    },
+    {
+      "title": "कुसौरा से 4 आवारा गोवंश को गौशाला पहुंचाया",
+      "excerpt": "कुसौरा से 4 आवारा गोवंश को भौंसिंहपुर गौशाला पहुंचाया",
+      "link": "https://dainik.bhaskar.com/L2qMq5FP4Ub"
+    },
+    {
+      "title": "बैंक में कैश की कमी से ग्राहक परेशान",
+      "excerpt": "बच्चों के स्कूल एडमिशन के लिए कैश निकालने आए ग्राहक खाली हाथ लौटे, पीने के पानी की भी व्यवस्था नहीं",
+      "link": "https://dainik.bhaskar.com/baLeeHQZ7Ub"
+    },
+    {
+      "title": "कुसौरा बाजार में गोवंश की सड़क दुर्घटना",
+      "excerpt": "बस्ती के कुसौरा बाजार में दो गोवंश की सड़क दुर्घटना में मौत, अन्य पशु भी जमा",
+      "link": "https://dainik.bhaskar.com/C6Oxkirq9Ub"
+    },
+    {
+      "title": "प्रशासन ने बुलडोजर से की कार्रवाई",
+      "excerpt": "प्रशासन ने बुलडोजर से की कार्रवाई, घर वालों का दावा- बिना नोटिस के ढहाया गया मकान",
+      "link": "https://dainik.bhaskar.com/bVFbmjmY9Ub"
+    },
+    {
+      "title": "बहादुरपुर में सुबह 3 बजे से जलाभिषेक",
+      "excerpt": "बस्ती के बहादुरपुर में सुबह 3 बजे से शुरू हुआ जलाभिषेक, हजारों भक्तों ने की पूजा",
+      "link": "https://dainik.bhaskar.com/4x5XdKczeVb"
+    },
+    {
+      "title": "झोपड़ी में आग लगाई, महिलाओं से मारपीट",
+      "excerpt": "झोपड़ी में आग लगाई, महिलाओं से मारपीट; पुलिस पर कार्यवाही न करने का आरोप",
+      "link": "https://dainik.bhaskar.com/2YdGvKI2eVb"
+    },
+    {
+      "title": "ग्राम प्रधान ने बिना अनुमति सड़क खुदवाई",
+      "excerpt": "ब्लॉक कार्यालय बहादुरपुर के बगल स्थित गांव में बिना PWD की अनुमति के ग्राम प्रधान ने कराई सड़क की खुदाई",
+      "link": "https://dainik.bhaskar.com/ywXJvbyUfVb"
+    },
+    {
+      "title": "शेखपुरा में बिजली आपूर्ति ठप",
+      "excerpt": "शेखपुरा गांव में बिजली आपूर्ति ठप, गर्मी और सिंचाई से परेशान ग्रामीण",
+      "link": "https://dainik.bhaskar.com/JYbyRQRfgVb"
+    },
+    {
+      "title": "स्कूली बच्चों और ग्रामीणों के लिए खतरा",
+      "excerpt": "स्कूली बच्चों और ग्रामीणों के लिए बना खतरा, कई बार शिकायत के बाद भी नहीं हुई कार्रवाई",
+      "link": "https://dainik.bhaskar.com/Em9GGGi4hVb"
+    },
+    {
+      "title": "सुबह से ही श्रद्धालुओं की लगी कतार",
+      "excerpt": "सुबह से ही लगी श्रद्धालुओं की कतार, भक्तों ने किया जलाभिषेक और पूजन",
+      "link": "https://dainik.bhaskar.com/0WWMGHjImVb"
     }
   ],
   "gallery": [
     "kumbh.jpg"
   ],
   "contact": {
-    "access_key": "b4b5b225-bed8-407d-a2c1-51331144c469",
+    "access_key": "9d8e6c86-1602-4b8a-9149-b1060aac4a0c",
     "subject": "New Contact Form Submission from Portfolio",
     "from_name": "Portfolio Contact Form"
   }

@@ -15,10 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -114,6 +110,69 @@
             @apply bg-gray-200 dark:bg-gray-800 animate-pulse;
         }
         
+        /* Timeline styling */
+        .timeline-dot {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 4px rgba(156, 163, 175, 0.2);
+        }
+        
+        /* Skill card hover effect */
+        .skill-card {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        /* Aggressive Mobile Responsiveness */
+        @media (max-width: 640px) {
+            body {
+                overflow-x: hidden;
+            }
+            
+            /* Prevent horizontal overflow */
+            * {
+                max-width: 100vw;
+            }
+            
+            /* Responsive text sizes */
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            h3 {
+                font-size: 1.25rem !important;
+            }
+            
+            /* Ensure sections don't overflow */
+            section {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            /* Timeline adjustments for mobile */
+            .timeline-item {
+                padding-left: 3rem !important;
+            }
+            
+            /* Grid adjustments */
+            .grid {
+                gap: 1rem !important;
+            }
+            
+            /* Card padding */
+            article, .skill-card {
+                padding: 1rem !important;
+            }
+        }
+        
         /* Newspaper column layout for articles */
         @media (min-width: 1024px) {
             .newspaper-column {
@@ -158,110 +217,145 @@
 </head>
 <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <!-- Skip to Content Link for Accessibility -->
-    <a href="#home" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:rounded-lg">Skip to main content</a>
+    <a href="#articles" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:rounded-lg">Skip to main content</a>
     
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="#home" class="text-xl font-serif font-bold" aria-label="Prabhakar - Home">Prabhakar</a>
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex justify-between items-center h-16">
+                <a href="index.html" class="text-xl font-serif font-bold" aria-label="Prabhakar - Home">Prabhakar</a>
                 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8" aria-label="Main navigation">
-                    <a href="#home" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Home</a>
-                    <a href="#about" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">About</a>
-                    <a href="#articles" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors" title="Published News Articles">Articles</a>
-                    <a href="#gallery" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Gallery</a>
-                    <a href="#contact" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Contact</a>
+                <nav class="flex items-center space-x-8" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Home</a>
+                    <a href="index.html#about" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">About</a>
+                    <a href="index.html#articles" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Published Articles</a>
+                    <a href="index.html#gallery" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Photography</a>
+                    <a href="index.html#contact" class="nav-link hover:text-gray-600 dark:hover:text-gray-300 transition-colors">Contact</a>
                     <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
                         <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
                         <i data-lucide="moon" class="dark:hidden w-5 h-5"></i>
                     </button>
+                </nav>
+            </div>
+            
+            <!-- Mobile Navigation Bar -->
+            <div class="md:hidden flex items-center justify-between h-16 w-full">
+                <!-- Left: Burger Menu and Name -->
+                <div class="flex items-center gap-3 flex-1 min-w-0">
+                    <!-- Burger Menu -->
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex-shrink-0" aria-label="Toggle menu">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                    
+                    <!-- Name -->
+                    <a href="index.html" class="text-base font-serif font-bold min-w-0 truncate" aria-label="Prabhakar - Home">Prabhakar</a>
                 </div>
                 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <!-- Right: Theme Toggle -->
+                <button id="mobile-theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex-shrink-0" aria-label="Toggle theme">
+                    <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
+                    <i data-lucide="moon" class="dark:hidden w-5 h-5"></i>
                 </button>
             </div>
         </div>
         
-        <!-- Mobile Navigation -->
+        <!-- Mobile Navigation Menu -->
         <nav id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800" aria-label="Mobile navigation">
             <div class="px-4 py-4 space-y-3">
-                <a href="#home" class="block py-2 nav-link">Home</a>
-                <a href="#about" class="block py-2 nav-link">About</a>
-                <a href="#articles" class="block py-2 nav-link" title="Published News Articles">Articles</a>
-                <a href="#gallery" class="block py-2 nav-link">Gallery</a>
-                <a href="#contact" class="block py-2 nav-link">Contact</a>
-                <button id="mobile-theme-toggle" class="flex items-center py-2 nav-link">
-                    <span class="mr-2">Toggle Theme</span>
-                    <i data-lucide="sun" class="hidden dark:block w-5 h-5"></i>
-                    <i data-lucide="moon" class="dark:hidden w-5 h-5"></i>
-                </button>
+                <a href="index.html" class="block py-2 nav-link">Home</a>
+                <a href="index.html#about" class="block py-2 nav-link">About</a>
+                <a href="index.html#articles" class="block py-2 nav-link">Published Articles</a>
+                <a href="index.html#gallery" class="block py-2 nav-link">Photography</a>
+                <a href="index.html#contact" class="block py-2 nav-link">Contact</a>
             </div>
         </nav>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-            <div class="mb-10">
-                <img src="avatar.png" alt="Prabhakar" class="w-36 h-36 md:w-40 md:h-40 rounded-full mx-auto object-cover border-4 border-gray-900 dark:border-gray-100 shadow-xl ring-4 ring-gray-200 dark:ring-gray-800">
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 md:pt-16 px-3 sm:px-4 md:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center w-full">
+            <div class="mb-8 md:mb-10">
+                <img src="avatar.png" alt="Prabhakar" class="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full mx-auto object-cover border-4 border-gray-900 dark:border-gray-100 shadow-xl ring-4 ring-gray-200 dark:ring-gray-800">
             </div>
-            <h1 id="hero-headline" class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 tracking-tight"></h1>
-            <div class="section-divider w-24 mx-auto"></div>
-            <p id="hero-subline" class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed article-text"></p>
+            <h1 id="hero-headline" class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 md:mb-6 tracking-tight px-2"></h1>
+            <div class="section-divider w-20 md:w-24 mx-auto"></div>
+            <p id="hero-subline" class="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-2"></p>
+            
+            <!-- Download CV Button -->
+            <div class="mb-6 md:mb-8 px-2">
+                <a 
+                    href="docs/Prabhakar_MultimediaJournalist_CV.pdf" 
+                    download="Prabhakar_MultimediaJournalist_CV.pdf"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 font-medium text-xs md:text-sm border-2 border-gray-900 dark:border-white hover:shadow-lg"
+                    aria-label="Download CV"
+                >
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Download CV</span>
+                </a>
+            </div>
             
             <!-- Social Links -->
-            <div id="social-links" class="flex justify-center items-center space-x-4"></div>
+            <div id="social-links" class="flex justify-center items-center space-x-3 md:space-x-4 px-2"></div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-center" data-aos="fade-up">About</h2>
-            <div class="section-divider w-24 mx-auto mb-16"></div>
+    <section id="about" class="py-12 md:py-20 px-3 sm:px-4 md:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+        <div class="max-w-4xl mx-auto w-full">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-4 text-center px-2">About</h2>
+            <div class="section-divider w-20 md:w-24 mx-auto mb-12 md:mb-16"></div>
             
             <!-- Introduction -->
-            <div id="intro-section" class="mb-20" data-aos="fade-up" data-aos-delay="100"></div>
+            <div id="intro-section" class="mb-12 md:mb-20 px-2"></div>
             
             <!-- Work Experience -->
-            <div id="work-section" class="mb-20" data-aos="fade-up" data-aos-delay="200"></div>
+            <div id="work-section" class="mb-12 md:mb-20 px-2"></div>
             
             <!-- Education -->
-            <div id="education-section" class="mb-20" data-aos="fade-up" data-aos-delay="300"></div>
+            <div id="education-section" class="mb-12 md:mb-20 px-2"></div>
             
             <!-- Skills -->
-            <div id="skills-section" data-aos="fade-up" data-aos-delay="400"></div>
+            <div id="skills-section" class="px-2"></div>
         </div>
     </section>
 
-    <!-- Articles Section -->
-    <section id="articles" class="py-20 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-center" data-aos="fade-up">Published News Articles</h2>
-            <div class="section-divider w-24 mx-auto mb-16"></div>
-            <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    <!-- Articles Section (Home Preview) -->
+    <section id="articles" class="py-12 md:py-20 px-3 sm:px-4 md:px-6 lg:px-8 overflow-hidden">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-4 text-center px-2">Published Articles</h2>
+            <div class="section-divider w-20 md:w-24 mx-auto mb-12 md:mb-16"></div>
+            <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-6 md:mb-8"></div>
+            <div class="text-center px-2">
+                <a href="articles.html" class="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-lg hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-all duration-300 font-medium text-sm md:text-base">
+                    <span>See More Articles</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-center" data-aos="fade-up">Photo Gallery</h2>
-            <div class="section-divider w-24 mx-auto mb-16"></div>
-            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <!-- Gallery Section (Home Preview) -->
+    <section id="gallery" class="py-12 md:py-20 px-3 sm:px-4 md:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-4 text-center px-2">Photography</h2>
+            <div class="section-divider w-20 md:w-24 mx-auto mb-12 md:mb-16"></div>
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8"></div>
+            <div class="text-center px-2">
+                <a href="gallery.html" class="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-lg hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-all duration-300 font-medium text-sm md:text-base">
+                    <span>See More Photos</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800">
-        <div class="max-w-xl mx-auto" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-center" data-aos="fade-up">Get in Touch</h2>
-            <div class="section-divider w-24 mx-auto mb-8"></div>
-            <p class="text-gray-600 dark:text-gray-400 mb-8 text-center leading-relaxed">
+    <section id="contact" class="py-12 md:py-16 px-3 sm:px-4 md:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800 overflow-hidden">
+        <div class="max-w-xl mx-auto w-full">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold mb-4 text-center px-2">Get in Touch</h2>
+            <div class="section-divider w-20 md:w-24 mx-auto mb-6 md:mb-8"></div>
+            <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 text-center leading-relaxed px-2">
                 Have a story idea, tip, collaboration proposal, or just want to connect? I'd love to hear from you.
             </p>
             
@@ -274,37 +368,37 @@
                 <div id="form-message" class="hidden p-3 rounded text-sm mb-4"></div>
                 
                 <div>
-                    <label for="name" class="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">Name</label>
+                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
                     <input 
                         type="text" 
                         name="name" 
                         id="name"
                         required 
-                        class="w-full px-3 py-2 text-sm rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent transition-all"
+                        class="w-full px-4 py-2.5 text-base rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent transition-all"
                         placeholder="Your name"
                     >
                 </div>
                 
                 <div>
-                    <label for="email" class="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">Email</label>
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                     <input 
                         type="email" 
                         name="email" 
                         id="email"
                         required 
-                        class="w-full px-3 py-2 text-sm rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent transition-all"
+                        class="w-full px-4 py-2.5 text-base rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent transition-all"
                         placeholder="your.email@example.com"
                     >
                 </div>
                 
                 <div>
-                    <label for="message" class="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-1.5">Message</label>
+                    <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
                     <textarea 
                         name="message" 
                         id="message"
                         required 
                         rows="5"
-                        class="w-full px-3 py-2 text-sm rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent transition-all resize-none"
+                        class="w-full px-4 py-2.5 text-base rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600 focus:border-transparent transition-all resize-none leading-relaxed"
                         placeholder="Share your story idea, tip, collaboration proposal, or just say hello..."
                     ></textarea>
                 </div>
@@ -312,7 +406,7 @@
                 <button 
                     type="submit" 
                     id="submit-btn"
-                    class="w-full px-4 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium text-sm"
+                    class="w-full px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium text-base"
                 >
                     <span id="submit-text">Send Message</span>
                     <span id="submit-loading" class="hidden">Sending...</span>
