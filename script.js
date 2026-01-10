@@ -394,7 +394,13 @@ function renderArticles() {
     }
     
     // Check if we're on home page (limit to 3) or articles page (show all)
-    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname === '';
+    // Handle GitHub Pages URLs: /, /repo-name/, /repo-name/index.html, /index.html
+    const pathname = window.location.pathname;
+    const isHomePage = pathname === '/' || 
+                       pathname === '' || 
+                       pathname.endsWith('/') || 
+                       pathname.endsWith('index.html') || 
+                       pathname.endsWith('/index.html');
     const articlesToShow = isHomePage ? portfolioData.articles.slice(0, 3) : portfolioData.articles;
     
     // Helper function to detect if text contains Devanagari (Hindi) characters
@@ -446,7 +452,13 @@ function renderGallery() {
     }
     
     // Check if we're on home page (limit to 3) or gallery page (show all)
-    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname === '';
+    // Handle GitHub Pages URLs: /, /repo-name/, /repo-name/index.html, /index.html
+    const pathname = window.location.pathname;
+    const isHomePage = pathname === '/' || 
+                       pathname === '' || 
+                       pathname.endsWith('/') || 
+                       pathname.endsWith('index.html') || 
+                       pathname.endsWith('/index.html');
     if (isHomePage) {
         files = files.slice(0, 3); // Take top 3 on home page
     }
