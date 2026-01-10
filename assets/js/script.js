@@ -473,7 +473,7 @@ function renderGallery() {
         
         if (typeof file === 'string') {
             // New structure: filename string
-            imageUrl = `images/gallery/${file}`;
+            imageUrl = `assets/images/gallery/${file}`;
             alt = file.replace(/\.[^/.]+$/, ''); // Remove extension for alt text
             caption = '';
         } else {
@@ -585,7 +585,7 @@ function initContactForm() {
 async function init() {
     try {
         // Fetch data
-        const response = await fetch('data.json');
+        const response = await fetch('assets/data/data.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -657,7 +657,7 @@ async function init() {
                             </p>
                         </div>
                     ` : `
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">Please check that data.json exists and is valid.</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Please check that assets/data/data.json exists and is valid.</p>
                         <p class="text-sm text-gray-500 dark:text-gray-500">Error details: ${error.message}</p>
                     `}
                     <button onclick="location.reload()" class="mt-6 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium">
