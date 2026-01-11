@@ -71,7 +71,7 @@
           "type": ["Print", "Digital"]
         },
         {
-          "company": "Jan Suraj",
+          "company": "Jan Suraaj",
           "timeframe": "Oct 2023 - Sep 2024",
           "role": "Fellow",
           "type": ["Social Impact"]
@@ -397,10 +397,7 @@
     "clouds.jpg",
     "flowers_retro.JPG",
     "flowers.JPG",
-    "friends.JPG",
-    "happiness.JPG",
     "kumbh.jpg",
-    "learning.JPG",
     "lemon.JPG",
     "library.JPG",
     "lily.JPG",
@@ -409,9 +406,7 @@
     "pose.JPG",
     "redness.JPG",
     "road_not_taken.JPG",
-    "roses_are_red.JPG",
-    "smile.JPG",
-    "vision.JPG"
+    "roses_are_red.JPG"
   ],
   "contact": {
     "access_key": "9d8e6c86-1602-4b8a-9149-b1060aac4a0c",

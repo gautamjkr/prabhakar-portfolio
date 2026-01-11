@@ -87,28 +87,59 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+            scrollToSection(targetId);
             
-            if (targetElement) {
-                const offsetTop = targetElement.offsetTop - 64; // Account for fixed navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    const icon = document.querySelector('#mobile-menu-btn i');
-                    if (icon) {
-                        icon.setAttribute('data-lucide', 'menu');
-                        lucide.createIcons();
-                    }
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                const icon = document.querySelector('#mobile-menu-btn i');
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
                 }
             }
         });
     });
+}
+
+// Scroll to a specific section
+function scrollToSection(sectionId) {
+    const targetElement = document.getElementById(sectionId);
+    if (targetElement) {
+        const offsetTop = targetElement.offsetTop - 64; // Account for fixed navbar
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Handle hash navigation when coming from another page
+function handleHashNavigation() {
+    // Check if there's a hash in the URL
+    if (window.location.hash) {
+        const hash = window.location.hash.substring(1); // Remove the #
+        
+        // Wait for all content to be rendered (sections are dynamically loaded)
+        // Try multiple times to ensure content is loaded
+        const attemptScroll = (attempts = 0) => {
+            const targetElement = document.getElementById(hash);
+            if (targetElement && targetElement.offsetTop > 0) {
+                // Element exists and has been rendered
+                scrollToSection(hash);
+            } else if (attempts < 10) {
+                // Retry after a short delay (content might still be loading)
+                setTimeout(() => attemptScroll(attempts + 1), 100);
+            } else {
+                // Final attempt after longer delay
+                setTimeout(() => scrollToSection(hash), 500);
+            }
+        };
+        
+        // Start attempting to scroll
+        attemptScroll();
+    }
 }
 
 // Render Hero Section
@@ -484,12 +515,16 @@ function renderGallery() {
         }
         
         return `
-            <div class="group relative overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800 aspect-square">
+            <div class="group relative overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800 aspect-square cursor-pointer" 
+                 onclick="openLightbox('${imageUrl}', ${index}, ${files.length})">
                 <img 
                     src="${imageUrl}" 
                     alt="${alt}" 
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 image-loading"
                     loading="lazy"
+                    data-image-index="${index}"
+                    data-image-url="${imageUrl}"
+                    data-image-alt="${alt}"
                     onload="this.classList.remove('image-loading'); this.style.opacity='1'"
                     onerror="this.classList.remove('image-loading'); this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center text-gray-400\\'><i data-lucide=\\'image-off\\' class=\\'w-12 h-12\\'></i></div>'; lucide.createIcons();"
                     style="opacity: 0; transition: opacity 0.3s"
@@ -504,7 +539,173 @@ function renderGallery() {
     }).join('');
     
     lucide.createIcons();
+    
+    // Store gallery images for lightbox navigation
+    window.galleryImages = files.map((file, idx) => {
+        if (typeof file === 'string') {
+            return {
+                url: `assets/images/gallery/${file}`,
+                alt: file.replace(/\.[^/.]+$/, '')
+            };
+        } else {
+            return {
+                url: convertGoogleDriveUrl(file.url),
+                alt: file.alt || 'Gallery image'
+            };
+        }
+    });
 }
+
+// Lightbox functionality
+let currentImageIndex = 0;
+let lightboxImages = [];
+
+function initLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    
+    if (!lightbox) return;
+    
+    // Close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeLightbox);
+    }
+    
+    // Previous button
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => navigateLightbox(-1));
+    }
+    
+    // Next button
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => navigateLightbox(1));
+    }
+    
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('hidden')) return;
+        
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            navigateLightbox(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigateLightbox(1);
+        }
+    });
+    
+    // Prevent body scroll when lightbox is open
+    const observer = new MutationObserver(() => {
+        if (!lightbox.classList.contains('hidden')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+    
+    observer.observe(lightbox, { attributes: true, attributeFilter: ['class'] });
+}
+
+// Open lightbox with image
+function openLightbox(imageUrl, imageIndex, totalImages) {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    
+    if (!lightbox || !lightboxImage) return;
+    
+    // Use stored gallery images or get from DOM
+    if (window.galleryImages && window.galleryImages.length > 0) {
+        lightboxImages = window.galleryImages;
+    } else {
+        // Fallback: get images from DOM
+        const galleryGrid = document.getElementById('gallery-grid');
+        if (galleryGrid) {
+            const images = Array.from(galleryGrid.querySelectorAll('img[data-image-url]'));
+            lightboxImages = images.map(img => ({
+                url: img.getAttribute('data-image-url'),
+                alt: img.getAttribute('data-image-alt') || ''
+            }));
+        }
+    }
+    
+    if (lightboxImages.length === 0) return;
+    
+    // Find the index of the clicked image
+    currentImageIndex = lightboxImages.findIndex(img => img.url === imageUrl);
+    if (currentImageIndex === -1) {
+        currentImageIndex = imageIndex || 0;
+    }
+    
+    // Update image
+    lightboxImage.src = lightboxImages[currentImageIndex].url;
+    lightboxImage.alt = lightboxImages[currentImageIndex].alt || 'Gallery image';
+    
+    // Show/hide navigation buttons
+    if (prevBtn) {
+        prevBtn.classList.toggle('hidden', lightboxImages.length <= 1);
+    }
+    if (nextBtn) {
+        nextBtn.classList.toggle('hidden', lightboxImages.length <= 1);
+    }
+    
+    // Show lightbox
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+    
+    // Refresh icons
+    lucide.createIcons();
+}
+
+// Close lightbox
+function closeLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    if (!lightbox) return;
+    
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Navigate lightbox
+function navigateLightbox(direction) {
+    if (lightboxImages.length <= 1) return;
+    
+    currentImageIndex += direction;
+    
+    // Wrap around
+    if (currentImageIndex < 0) {
+        currentImageIndex = lightboxImages.length - 1;
+    } else if (currentImageIndex >= lightboxImages.length) {
+        currentImageIndex = 0;
+    }
+    
+    const lightboxImage = document.getElementById('lightbox-image');
+    if (lightboxImage) {
+        lightboxImage.src = lightboxImages[currentImageIndex].url;
+        lightboxImage.alt = lightboxImages[currentImageIndex].alt || 'Gallery image';
+    }
+}
+
+// Make functions globally available
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
+window.navigateLightbox = navigateLightbox;
 
 // Initialize Contact Form
 function initContactForm() {
@@ -626,8 +827,14 @@ async function init() {
         // Initialize mobile menu
         initMobileMenu();
         
+        // Initialize lightbox
+        initLightbox();
+        
         // Initialize smooth scroll
         initSmoothScroll();
+        
+        // Handle hash navigation from other pages (after page loads)
+        handleHashNavigation();
         
     } catch (error) {
         console.error('Error loading portfolio data:', error);
